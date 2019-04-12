@@ -8,6 +8,5 @@ jobs:
       - checkout
 
       - run:
-          name: Build source code
+          name: Build
           command: g++ bootstrap/main.cpp
-          command: echo "Testing source code build . . ."
