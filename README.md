@@ -3,7 +3,9 @@
 **A retro Platform**
 
 ![forthebadge](https://forthebadge.com/images/badges/built-with-grammas-recipe.svg)![forthebadge](https://forthebadge.com/images/badges/60-percent-of-the-time-works-every-time.svg)
+
 ![shields.io](https://img.shields.io/badge/docker-v18.06.1-blue.svg?style=for-the-badge)![shields.io](https://img.shields.io/badge/docker--compose-v1.22.0-blue.svg?style=for-the-badge)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/9d343dad0a334a0ba7f5cbbefc9adcdb)](https://www.codacy.com?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=xNero321/OOP_arcade_2018&amp;utm_campaign=Badge_Grade)
 
 ## Requirement
 
