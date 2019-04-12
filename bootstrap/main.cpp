@@ -10,5 +10,6 @@
 int main(int ac, char **av)
 {
     printf("Hello World!");
+    printf("Hello World!");
     return (0);
 }
