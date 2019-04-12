@@ -2,15 +2,17 @@ version: 2
 jobs:
   build:
     docker:
-      - image: debian:stretch
+      - image: gcc
 
     steps:
       - checkout
 
       - run:
-          name: Greeting
-          command: echo Hello, world.
-
+          name: Build
+          command: g++ bootstrap/main.cpp
       - run:
-          name: Print the Current Time
-          command: date
+          name: Checking artifact
+          command: ls bootstrap
+      - run:
+          name: Executing artifact
+          command: ./a.out
