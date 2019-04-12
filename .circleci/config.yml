@@ -15,4 +15,4 @@ jobs:
           command: ls bootstrap
       - run:
           name: Executing artifact
-          command: ./bootstrap/a.out
+          command: ./a.out
