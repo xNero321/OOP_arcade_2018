@@ -8,7 +8,7 @@
 #include "Pacman.hpp"
 
 extern "C" {
-    Nibbler *allocatorGame()
+    Pacman *allocatorGame()
     {
         return (new (Pacman()));
     }
@@ -62,6 +62,8 @@ void Pacman::setMap(const std::string path)
 
 void Pacman::updateGame(Arcade::Event event)
 {
+    int ai_direction = 0;
+
     if (_map[_character.front()][_character.back()] == 2) {
         _map[_character.front()][_character.back()] = 0;
         score += 10;
@@ -73,25 +75,36 @@ void Pacman::updateGame(Arcade::Event event)
             return;
         }
     }
-    if((event == Arcade::Event::KEYRIGHT || _direction == 1) && _direction != 4) {
-        if (_map[_character.front()][_map[_character.back() + 1]])
+    if ((event == Arcade::Event::KEYRIGHT || _direction == 1) && _direction != 4) {
+        if (_map[_character.front()][_map[_character.back() + 1]] != 1)
             _character.back() += 1;
         _direction = 1;
     }
-    if((event == Arcade::Event::KEYDOWN || _direction == 2) && _direction != 3) {
-        if (_map[_character.front() + 1][_map[_character.back()]])
+    if ((event == Arcade::Event::KEYDOWN || _direction == 2) && _direction != 3) {
+        if (_map[_character.front() + 1][_map[_character.back()]] != 1)
             _character.front() += 1;
         _direction = 2;
     }
-    if((event == Arcade::Event::KEYUP || _direction == 3) && _direction != 2) {
-        if (_map[_character.front() - 1][_map[_character.back()]])
+    if ((event == Arcade::Event::KEYUP || _direction == 3) && _direction != 2) {
+        if (_map[_character.front() - 1][_map[_character.back()]] != 1)
             _character.front() -= 1;
         _direction = 3;
     }
-    if((event == Arcade::Event::KEYLEFT || _direction == 4) && _direction != 1) {
-        if (_map[_character.front()][_map[_character.back() - 1]])
+    if ((event == Arcade::Event::KEYLEFT || _direction == 4) && _direction != 1) {
+        if (_map[_character.front()][_map[_character.back() - 1]] != 1)
             _character.back() -= 1;
         _direction = 4;
+    }
+    for (int i = 0; i < 4; i++) {
+        ai_direction = std::rand() % 3 + 1;
+        if (ai_direction == 1 && _map[_enemys[i].front()][_enemys[i].back() + 1] != 1)
+                _enemys[i].back() += 1;
+        else if (ai_direction == 2 && _map[_enemys[i].front() + 1][_enemys[i].back()] != 1)
+                _enemys[i].front() += 1;
+        else if (ai_direction == 3 && _map[_enemys[i].front()][_enemys[i].back() - 1] != 1)
+                _enemys[i].back() -= 1;
+        else if (ai_direction == 4 && _map[_enemys[i].front() - 1][_enemys[i].back()] != 1)
+            _enemys[i].front() -= 1;
     }
 }
 
@@ -109,7 +122,7 @@ void Pacman::resetGame()
     _enemys.pushback(e2);
     _enemys.pushback(e3);
     _enemys.pushback(e4);
-    setMap("/games/rsc/nibbler");
+    setMap("/games/rsc/pacman");
     _score = 0;
     _direction = 0;
 }
