@@ -17,13 +17,18 @@ class Pacman : public Arcade::AGame {
         ~Pacman();
 
         void setMap(const std::string path);
+        void setBox(std::vector<int> pos) {(void)pos;};
+        void setObject(std::vector<int> obj) {(void)obj;};
 
         int getScore() const {return (_score);};
+        std::map<int, std::vector<int>> &getMap() {return (_map);};
+        std::vector<int> getCharacter()  {return _character;};
         std::string getName() const {return ("Pacman");};
 
 
         void resetGame();
         void updateGame(Arcade::Event event);
+        bool gameOver() const {return (_gameOver);};
 
     protected:
         std::vector<int> _character;
