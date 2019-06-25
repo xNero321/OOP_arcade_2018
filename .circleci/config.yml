@@ -9,10 +9,7 @@ jobs:
 
       - run:
           name: Build
-          command: g++ bootstrap/main.cpp
+          command: make all
       - run:
           name: Checking artifact
-          command: ls bootstrap
-      - run:
-          name: Executing artifact
-          command: ./a.out
+          command: ls ./arcade
